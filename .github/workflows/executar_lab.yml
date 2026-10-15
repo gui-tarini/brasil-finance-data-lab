@@ -26,7 +26,7 @@ jobs:
         run: python -m pip install -r requirements.txt
 
       - name: Executar laboratorio
-        run: python Brasil_Finance_Data_Lab_Programa.py
+        run: python brasil_finance_data_lab_programa.py
 
       - name: Guardar arquivos gerados
         uses: actions/upload-artifact@v7
