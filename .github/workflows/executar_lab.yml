@@ -1,0 +1,40 @@
+name: Executar Brasil Finance Data Lab
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  executar-laboratorio:
+    runs-on: ubuntu-latest
+
+    env:
+      MPLBACKEND: Agg
+
+    steps:
+      - name: Baixar codigo do repositorio
+        uses: actions/checkout@v7
+
+      - name: Preparar Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Instalar bibliotecas
+        run: python -m pip install -r requirements.txt
+
+      - name: Executar laboratorio
+        run: python Brasil_Finance_Data_Lab_Programa.py
+
+      - name: Guardar arquivos gerados
+        uses: actions/upload-artifact@v7
+        with:
+          name: resultados-brasil-finance-data-lab
+          path: |
+            indicadores_brasil.csv
+            relatorio_brasil.txt
+            grafico_indicadores.png
+          if-no-files-found: error
+          retention-days: 30
