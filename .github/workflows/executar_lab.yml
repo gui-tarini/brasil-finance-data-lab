@@ -2,6 +2,9 @@ name: Executar Brasil Finance Data Lab
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '17 9 20 * *'
+      timezone: 'America/Sao_Paulo'
 
 permissions:
   contents: read
